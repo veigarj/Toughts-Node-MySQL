@@ -12,6 +12,7 @@ router.post('/add', checkAuth, ToughtsController.createToughtSave);
 
 // Edite Rotes
 router.get('/edit/:id', checkAuth, ToughtsController.updateTought);
+router.post('/edit', checkAuth, ToughtsController.updateToughtSave);
 
 // Remove Rotes
 router.post('/remove', checkAuth, ToughtsController.removeTought);
