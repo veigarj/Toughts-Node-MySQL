@@ -75,8 +75,8 @@ app.get('/', ToughtsController.showToughts);
 
 conn
   // forçar ligação di BD no sync
-  //.sync({ force: true })
-  .sync()
+  .sync({ force: true })
+  // .sync()
 
   .then(() => {
     app.listen(3000);
