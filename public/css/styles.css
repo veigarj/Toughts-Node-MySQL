@@ -138,6 +138,54 @@ form input[type='submit']:hover,
   margin-top: 1.5em;
 }
 
+/* Dashbord */
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+}
+
+.title-container h2 {
+  border-left: 4px solid #f6982d;
+  padding: 10px;
+}
+
+.dashboard h3 {
+  margin: 1.5em;
+}
+
+.dashboard ul {
+  list-style: none;
+}
+
+.dashboard li {
+  padding: 12px;
+  border-bottom: 1px solid #f6982d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard .label {
+  font-weight: bold;
+  color: #f6982d;
+  margin-right: 2em;
+}
+
+.dashboard .actions {
+  display: flex;
+}
+
+.dashboard .actions .btn {
+  color: #fff;
+  border-color: #fff;
+  margin: 0 0.5em;
+}
+
+.dashboard a {
+  color: #f6982d;
+}
+
 /* Footer */
 footer {
   height: 150px;

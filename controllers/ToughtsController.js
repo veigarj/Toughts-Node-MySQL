@@ -26,7 +26,14 @@ module.exports = class ToughtsController {
     // pega o conteudo e filtar com map em uma Array
     const toughts = user.Toughts.map((result) => result.dataValues);
 
-    res.render('toughts/dashboard', { toughts });
+    let emptyToughts = false;
+
+    // verificar a quantidade de elementos no arr
+    if (toughts.length === 0) {
+      emptyToughts = true;
+    }
+
+    res.render('toughts/dashboard', { toughts, emptyToughts });
   }
 
   static createTought(req, res) {
@@ -49,5 +56,31 @@ module.exports = class ToughtsController {
     } catch (error) {
       console.log('Aconteceu um erro:' + error);
     }
+  }
+
+  // Remover Conteudo
+  static async removeTought(req, res) {
+    const id = req.body.id;
+    const UserId = req.session.userid;
+
+    try {
+      await Tought.destroy({ where: { id: id, UserId: UserId } });
+
+      req.flash('message', 'Pensamento removido com sucesso!');
+
+      req.session.save(() => {
+        res.redirect('/toughts/dashboard');
+      });
+    } catch (error) {
+      console.log('Aconteceu um erro:' + error);
+    }
+  }
+
+  static async updateTought(req, res) {
+    const id = req.params.id;
+
+    const tought = await Tought.findOne({ where: { id: id }, raw: true });
+
+    res.render('toughts/edit', { tought });
   }
 };

@@ -6,7 +6,19 @@
   <h3>Seus Pensamentos</h3>
   <ul>
     {{#each toughts}}
-      <li>{{this.title}}</li>
+      <li>
+        <span class="label">{{this.title}}</span>
+        <span class="actions">
+          <a href="/toughts/edit/{{this.id}}" class="btn">Editar</a>
+          <form action="/toughts/remove" method="POST">
+          <input type="hidden" name="id" value="{{this.id}}">
+          <input type="submit" value="Excluir" class="btn">
+          </form>
+        </span>
+      </li>
     {{/each}}
   </ul>
+  {{#if emptyToughts}}
+  <p>Ainda nao há nenhum pensamento seu, comece a criar <a href="/toughts/add">por aqui</a></p>
+  {{/if}}
 </div>
