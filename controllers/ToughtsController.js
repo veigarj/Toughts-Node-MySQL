@@ -11,6 +11,7 @@ module.exports = class ToughtsController {
       search = req.query.search;
     }
 
+    // Metodo de ordernar
     let order = 'DESC';
 
     if (req.query.order === 'old') {
@@ -25,6 +26,7 @@ module.exports = class ToughtsController {
         // metodo de Search
         title: { [Op.like]: `%${search}%` },
       },
+      // ordernar
       order: [['createdAt', order]],
     });
 
